@@ -5,6 +5,11 @@ public class Player {
 	private String playerName;
 	private Hand hand; // current player's hand
 	
+	public Player(String playerId, String playName) {
+		this.playerID = playerId;
+		this.playerName = playName;
+	}
+	
 	public String getPlayerID() {
 		return playerID;
 	}
