@@ -4,6 +4,7 @@ public class Player {
 	private String playerID;
 	private String playerName;
 	private Hand hand; // current player's hand
+	//-- add an indicator to say it's my turn
 	
 	public Player(String playerId, String playName) {
 		this.playerID = playerId;

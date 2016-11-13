@@ -25,6 +25,7 @@
 			</lib>
 			<classes dir="build/classes"/>
 		</war>
+		<copy file="Fourball.war" todir="C:\\Dev\\apache-tomcat-8.0.33\\webapps" />
 	</target>
 	
 	<target name="clean">

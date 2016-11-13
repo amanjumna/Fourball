@@ -1,0 +1,68 @@
+This simulates the gradual filling up of a 4 hand game.
+The test ends when all 4 slots are filled.
+Next step would be to define the behaviour immediately after the final player joins
+The calls below where made in the order they appear
+ 
+ http://localhost:8080/Fourball/FourballServlet?OPERATION=REGISTERCLIENT&PLAYERNAME=STAN
+["cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad","[]"]
+ 
+ http://localhost:8080/Fourball/FourballServlet?OPERATION=CREATEGAME&GAMENAME=SNVL
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45","gameName":"SNVL","gameSize":4,"teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345"},{"teamID":"f64b82a3-956b-4159-8e38-766af1b77314"}]}
+
+http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=AMAN&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=e731dc65-b9c4-4066-b1ce-08bca0562345
+"No player found for playerName : AMAN"
+
+http://localhost:8080/Fourball/FourballServlet?OPERATION=REGISTERCLIENT&PLAYERNAME=AMAN
+["8a653e5e-687c-402f-89d6-cc6b1c3a5fef","[{\"gameID\":\"29af0ed8-061e-4727-8667-06d4c1736e45\",\"gameName\":\"SNVL\",\"gameSize\":4,\"teams\":[{\"teamID\":\"e731dc65-b9c4-4066-b1ce-08bca0562345\",\"players\":[]},{\"teamID\":\"f64b82a3-956b-4159-8e38-766af1b77314\"}]}]"]
+
+http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=AMAN&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=e731dc65-b9c4-4066-b1ce-08bca0562345
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45",
+ "gameName":"SNVL",
+ "gameSize":4,
+  "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"}]},{"teamID":"f64b82a3-956b-4159-8e38-766af1b77314"}]}
+
+http://localhost:8080/Fourball/FourballServlet?OPERATION=UPDATEGAME&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45",
+ "gameName":"SNVL",
+ "gameSize":4,
+ "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"}]},{"teamID":"f64b82a3-956b-4159-8e38-766af1b77314"}]}
+ 
+ http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=STAN&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=e731dc65-b9c4-4066-b1ce-08bca0562345
+ 
+ {"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45",
+  "gameName":"SNVL",
+  "gameSize":4,
+  "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"},{"playerID":"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad","playerName":"STAN"}]},
+           {"teamID":"f64b82a3-956b-4159-8e38-766af1b77314"}]}
+		   
+http://localhost:8080/Fourball/FourballServlet?OPERATION=REGISTERCLIENT&PLAYERNAME=FINNY		   
+["54ed41af-2947-49e5-8c64-59560b2ff7fb",
+"[{\"gameID\":\"29af0ed8-061e-4727-8667-06d4c1736e45\",\
+    "gameName\":\"SNVL\",\"gameSize\":4,\
+	"teams\":[{\"teamID\":\"e731dc65-b9c4-4066-b1ce-08bca0562345\",\"players\":[{\"playerID\":\"8a653e5e-687c-402f-89d6-cc6b1c3a5fef\",\"playerName\":\"AMAN\"},{\"playerID\":\"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad\",\"playerName\":\"STAN\"}]},
+               {\"teamID\":\"f64b82a3-956b-4159-8e38-766af1b77314\"}]}]"]		   
+		   
+http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=FINNY&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=e731dc65-b9c4-4066-b1ce-08bca0562345
+"Game full"
+
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45","gameName":"SNVL","gameSize":4,
+ "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"},{"playerID":"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad","playerName":"STAN"}]},
+ {"teamID":"f64b82a3-956b-4159-8e38-766af1b77314"}]}
+		  
+http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=FINNY&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=f64b82a3-956b-4159-8e38-766af1b77314		  
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45",
+ "gameName":"SNVL","gameSize":4,
+  "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"},{"playerID":"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad","playerName":"STAN"}]},
+  {"teamID":"f64b82a3-956b-4159-8e38-766af1b77314","players":[{"playerID":"54ed41af-2947-49e5-8c64-59560b2ff7fb","playerName":"FINNY"}]}]}
+ 
+ 
+http://localhost:8080/Fourball/FourballServlet?OPERATION=REGISTERCLIENT&PLAYERNAME=WALDO 
+["2a6e67d1-291f-42d7-b75a-000e5077d1fd",
+"[{\"gameID\":\"29af0ed8-061e-4727-8667-06d4c1736e45\",\"gameName\":\"SNVL\",\"gameSize\":4,\
+"teams\":[{\"teamID\":\"e731dc65-b9c4-4066-b1ce-08bca0562345\",\"players\":[{\"playerID\":\"8a653e5e-687c-402f-89d6-cc6b1c3a5fef\",\"playerName\":\"AMAN\"},{\"playerID\":\"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad\",\"playerName\":\"STAN\"}]},
+          {\"teamID\":\"f64b82a3-956b-4159-8e38-766af1b77314\",\"players\":[{\"playerID\":\"54ed41af-2947-49e5-8c64-59560b2ff7fb\",\"playerName\":\"FINNY\"}]}]}]"]
+		  
+http://localhost:8080/Fourball/FourballServlet?OPERATION=JOINGAME&PLAYERNAME=WALDO&GAMEID=29af0ed8-061e-4727-8667-06d4c1736e45&TEAMID=f64b82a3-956b-4159-8e38-766af1b77314		  
+{"gameID":"29af0ed8-061e-4727-8667-06d4c1736e45","gameName":"SNVL","gameSize":4,
+ "teams":[{"teamID":"e731dc65-b9c4-4066-b1ce-08bca0562345","players":[{"playerID":"8a653e5e-687c-402f-89d6-cc6b1c3a5fef","playerName":"AMAN"},{"playerID":"cadb9e9d-0e14-40c8-8fd6-fb2b59c0ecad","playerName":"STAN"}]},
+          {"teamID":"f64b82a3-956b-4159-8e38-766af1b77314","players":[{"playerID":"54ed41af-2947-49e5-8c64-59560b2ff7fb","playerName":"FINNY"},{"playerID":"2a6e67d1-291f-42d7-b75a-000e5077d1fd","playerName":"WALDO"}]}]}		  

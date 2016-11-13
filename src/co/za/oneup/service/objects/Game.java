@@ -8,10 +8,17 @@ import java.util.Map;
 public class Game {	
 	private String gameID;
 	private String gameName;
+	private short gameSize;
 	private List<Team> teams; // 2 or 3 team
-	private List<Card> dealtCards; // list of cards already dealt
+	private List<Card> dealtCards; // list of cards already dealt -- not needed as the client only needs to use it's card details
 	private Map<String, Integer> scores; // map of teamId to score
 		
+	public short getGameSize() {
+		return gameSize;
+	}
+	public void setGameSize(short gameSize) {
+		this.gameSize = gameSize;
+	}
 	public String getGameName() {
 		return gameName;
 	}
