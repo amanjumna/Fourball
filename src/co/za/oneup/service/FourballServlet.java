@@ -64,7 +64,11 @@ public class FourballServlet extends HttpServlet {
 				if (current.getKey().equals("GAMENAME")) {
 					gameName = current.getValue()[0];					
 				}
-			}			
+			}
+
+			if gameName = ""
+                return "Error - GAMENAME required";
+
 			Game game = new Game();
 			game.setGameID(UUID.randomUUID().toString());
 			game.setGameName(gameName);
