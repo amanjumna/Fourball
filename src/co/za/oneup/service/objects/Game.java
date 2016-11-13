@@ -12,7 +12,14 @@ public class Game {
 	private List<Team> teams; // 2 or 3 team
 	private List<Card> dealtCards; // list of cards already dealt -- not needed as the client only needs to use it's card details
 	private Map<String, Integer> scores; // map of teamId to score
-		
+	private String gameState; // LOBBY/STARTED/FINISHED -- can use this to determine the screen to move to on the UI
+	
+	public String getGameState() {
+		return gameState;
+	}
+	public void setGameState(String gameState) {
+		this.gameState = gameState;
+	}
 	public short getGameSize() {
 		return gameSize;
 	}
