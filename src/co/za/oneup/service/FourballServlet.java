@@ -66,8 +66,13 @@ public class FourballServlet extends HttpServlet {
 				}
 			}
 
-			if gameName = ""
-                return "Error - GAMENAME required";
+			if (gameName.equals("")) {
+                String error = "Error - GAMENAME required";
+    			String finalresponse = gson.toJson(error);
+    			PrintWriter out = response.getWriter();
+    			out.println(finalresponse);
+    			return;                
+			}
 
 			Game game = new Game();
 			game.setGameID(UUID.randomUUID().toString());
@@ -131,6 +136,7 @@ public class FourballServlet extends HttpServlet {
 			// this will do the bulk of in-game logic:  
 			// 1.  Players will post their moves
 			// 2.  Players will get updates every few seconds (if no update then return a simple response to minimize overhead)
+			// 3. $$$s
 		}
 
 	}
